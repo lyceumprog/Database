@@ -14,7 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
+// ФАЙЛ КОПИРОВАНИЯ БАЗЫ ДАННЫХ ИЗ ПАПКИ Assets ВО ВНУТРЕННЮЮ ПАМЯТЬ ТЕЛЕФОНА
 namespace DB
 {
 	public class DatabaseCopy
@@ -24,10 +24,11 @@ namespace DB
 
 			string dbPath = System.IO.Path.Combine(System.Environment.GetFolderPath
 				(System.Environment.SpecialFolder.Personal),"test_db.sqlite"
-			);
+			); // ПОЛУЧЕНИЕ КОНЕЧНОГО ПУТИ К ФАЙЛУ
 
-			if (!File.Exists (dbPath)) {
+			if (!File.Exists (dbPath)) { // ПРОВЕРКА НАЛИЧИЯ ЭТОГО ФАЙЛА ПО ЭТОМУ ПУТИ
 				
+				//---------------- НАЧАЛО КОПИРОВАНИЯ
 				var dbAssetStream = context.Assets.Open("test_db");
 
 				var dbFileStream = new System.IO.FileStream(dbPath, System.IO.FileMode.OpenOrCreate);
@@ -44,6 +45,8 @@ namespace DB
 				dbFileStream.Flush();
 				dbFileStream.Close();
 				dbAssetStream.Close();
+				
+				//---------------- ОКОНЧАНИЕ КОПИРОВАНИЯ
 			}
 
 
