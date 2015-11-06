@@ -22,6 +22,10 @@ namespace DB
 	{
 		protected override void OnCreate (Bundle bundle)
 		{
+			string dbPath = System.IO.Path.Combine(System.Environment.GetFolderPath
+				(System.Environment.SpecialFolder.Personal),"test_db.sqlite"
+			);
+			
 			new DatabaseCopy(this); // ВЫЗОВ КОПИРОВАНИЯ БД ИЗ ПАПКИ Assets
 
 			base.OnCreate (bundle);
